@@ -1,7 +1,9 @@
+import Wrapper from './components/Wrapper'
+
 export default function App() {
   return (
-    <main>
+    <Wrapper>
       <h1>Hello</h1>
-    </main>
+    </Wrapper>
   )
 }
