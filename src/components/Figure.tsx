@@ -7,11 +7,11 @@ interface Shapes {
   [key: string]: JSX.Element
 }
 
-export default function Memo({ color, shape }: MemoProps) {
+export default function Figure({ color, shape }: MemoProps) {
   const styles = {
-    square: `w-6 h-6`,
-    circle: `w-6 h-6 rounded-full`,
-    triangle: `border-l-[12px] border-r-[12px] border-b-[23px] border-l-transparent border-r-transparent`
+    square: `w-12 h-12`,
+    circle: `w-12 h-12 rounded-full`,
+    triangle: `w-12 border-x-lr border-b-b border-x-transparent`
   }
 
   const colors = {
