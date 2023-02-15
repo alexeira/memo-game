@@ -8,7 +8,7 @@ module.exports = {
         b: '48px'
       },
       gridTemplateColumns: {
-        'auto-fill': 'repeat(auto-fill, minmax(100px, 1fr))'
+        'auto-fill': 'repeat(auto-fill, minmax(90px, 1fr))'
       }
     }
   },
