@@ -1,12 +1,10 @@
-import Memo from './components/Memo'
 import Wrapper from './components/Wrapper'
+import Memos from './components/Memos'
 
 export default function App() {
   return (
     <Wrapper>
-      <Memo color="red" shape="square" />
-      <Memo color="blue" shape="circle" />
-      <Memo color="yellow" shape="triangle" />
+      <Memos />
     </Wrapper>
   )
 }
