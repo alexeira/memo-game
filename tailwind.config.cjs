@@ -9,6 +9,19 @@ module.exports = {
       },
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(90px, 1fr))'
+      },
+      animation: {
+        'h-flip': 'flip-horizontal 1s ease-in-out',
+        'fade-in': 'fade-in 1s ease-in-out'
+      },
+      keyframes: {
+        'flip-horizontal': {
+          '1%': { transform: 'rotateY(180deg)' }
+        },
+        'fade-in': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 }
+        }
       }
     }
   },
