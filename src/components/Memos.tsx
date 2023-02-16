@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 
 import Figure from './Figure'
 
+const loupe = <div className="w-12 h-12 grid place-items-center text-3xl animate-h-flip">🔍</div>
+
 const shapes = [
   <Figure key="red-square" color="#FF5A5F" shape="square" />,
   <Figure key="yellow-triangle" color="#DBD56E" shape="triangle" />,
-  <Figure key="blue-circle" color="#3581b8" shape="circle" />,
+  <Figure key="blue-circle" color="#3581B8" shape="circle" />,
   <Figure key="green-pentagon" color="#5AD3D1" shape="pentagon" />
 ]
 
@@ -16,23 +18,36 @@ const duplicatedShapes = shapes
   ])
   .sort(() => Math.random() - 0.5)
 
-const styles = 'cursor-pointer rounded-lg p-5 mx-auto my-5 border border-gray-400'
-
 export default function Memos() {
   const [selected, setSelected] = useState<JSX.Element[]>([])
   const [guessed, setGuessed] = useState<JSX.Element[]>([])
 
+  const listedShapes = duplicatedShapes.map(shape => (
+    <li
+      key={shape.key}
+      className="cursor-pointer rounded-lg p-5 mx-auto my-5 border border-gray-400"
+      onClick={() =>
+        selected.length < 2 && !selected.includes(shape)
+          ? setSelected([...selected, shape])
+          : alert('You can only select two shapes at a time')
+      }
+    >
+      {selected.includes(shape) || guessed.includes(shape) ? shape : loupe}
+    </li>
+  ))
+
   useEffect(() => {
-    if (selected.length === 2) {
-      if (selected[0].key === selected[1].key) {
-        setSelected([])
+    const [first, second] = selected
+
+    if (selected.length === 2 && first?.key !== second?.key) {
+      if (first.props.shape === second.props.shape) {
+        setGuessed(prev => [...prev, first, second])
       }
-      if (selected[0].props.shape === selected[1].props.shape) {
-        setGuessed([...guessed, ...selected])
-      }
-      setTimeout(() => setSelected([]), 1000)
+
+      const timer = setTimeout(() => setSelected([]), 1000)
+
+      return () => clearTimeout(timer)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected])
 
   useEffect(() => {
@@ -44,21 +59,5 @@ export default function Memos() {
     }
   }, [guessed])
 
-  return (
-    <ul className="grid grid-cols-auto-fill gap-2 w-full ">
-      {duplicatedShapes.map(shape => (
-        <li
-          key={shape.key}
-          className={styles}
-          onClick={() => selected.length < 2 && setSelected([...selected, shape])}
-        >
-          {selected.includes(shape) || guessed.includes(shape) ? (
-            shape
-          ) : (
-            <div className="w-12 h-12 grid place-items-center text-3xl">🔍</div>
-          )}
-        </li>
-      ))}
-    </ul>
-  )
+  return <ul className="grid grid-cols-auto-fill gap-2 w-full">{listedShapes}</ul>
 }
