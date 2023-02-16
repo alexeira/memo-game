@@ -2,4 +2,4 @@
 
 # Memo Game
 
-A simple Memo game project to practice the basics of react like `useState()` or `useEffect`.
+A simple Memo game project to practice the basics of react like `useState()` or `useEffect()`.
