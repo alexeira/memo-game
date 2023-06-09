@@ -4,7 +4,7 @@
 
 Un pequeño juego de memoria con figuras de colores, para practicar conceptos de [`React`](https://es.react.dev/) y [`TypeScript`](https://www.typescriptlang.org/)
 
-Me base en uno de los proyectos que realizo [Goncy](https://github.com/goncy) en uno de sus streams. pero a diferencia del suyo, en el mio use figuras echas de **0** con `CSS` para practicarlo 
+Me base en uno de los proyectos que realizo [Goncy](https://github.com/goncy) en uno de sus streams, pero para añadirle mi toque, en el mio use figuras echas de **0** con [`TailwindCSS`](https://tailwindcss.com/).
 
 De esta forma, también se da la posibilidad a agregar más figuras al código, ya que estas se renderizan a través de una lista.
 
